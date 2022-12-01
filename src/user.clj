@@ -1,8 +1,11 @@
 (ns user
   (:require
-    [clojure.tools.namespace.repl :refer [refresh]]))
+    [clojure.tools.namespace.repl :refer [refresh]]
+    [day1.day1 :as day-1]))
 
 (def go refresh)
 
 (comment
-  go)
+  go
+  (day-1/part-1)
+  (day-1/part-2))

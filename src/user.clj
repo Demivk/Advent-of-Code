@@ -4,7 +4,8 @@
     [day1.day1 :as day-1]
     [day2.day2 :as day-2]
     [day3.day3 :as day-3]
-    [day4.day4 :as day-4]))
+    [day4.day4 :as day-4]
+    [day5.day5 :as day-5]))
 
 (def go refresh)
 
@@ -17,4 +18,6 @@
   (day-3/part-1)
   (day-3/part-2)
   (day-4/part-1)
-  (day-4/part-2))
+  (day-4/part-2)
+  (day-5/part-1)
+  (day-5/part-2))

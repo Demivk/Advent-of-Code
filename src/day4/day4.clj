@@ -5,26 +5,7 @@
 
 (defn read-input [] (flatten (map #(string/split-lines %) (string/split (slurp "src/day4/input.edn") #"\n\n"))))
 
-(defn filter-fully-overlapping [input]
-  (filterv
-    (fn [pairs]
-     (let [[fs fe ss se] (->>
-                           (string/split pairs #",")
-                           (mapv #(string/split % #"-"))
-                           (flatten)
-                           (mapv edn/read-string))]
-       (or
-           (and (<= fs ss) (>= fe se))
-           (and (<= ss fs) (>= se fe)))))
-    input))
-
-(defn part-1 []
-  (->>
-    (read-input)
-    (filter-fully-overlapping)
-    (count)))
-
-(defn filter-partly-overlapping [input]
+(defn filter-overlapping [fully? input]
   (filterv
     (fn [pairs]
       (let [[fs fe ss se] (->>
@@ -32,15 +13,25 @@
                             (mapv #(string/split % #"-"))
                             (flatten)
                             (mapv edn/read-string))]
-        (or
-          (and (<= fs se) (>= fs ss))
-          (and (<= ss fe) (>= ss fs)))))
+        (if fully?
+          (or
+            (and (<= fs ss) (>= fe se))
+            (and (<= ss fs) (>= se fe)))
+          (or
+            (and (<= fs se) (>= fs ss))
+            (and (<= ss fe) (>= ss fs))))))
     input))
+
+(defn part-1 []
+  (->>
+    (read-input)
+    (filter-overlapping true)
+    (count)))
 
 (defn part-2 []
   (->>
     (read-input)
-    (filter-partly-overlapping)
+    (filter-overlapping false)
     (count)))
 
 (comment

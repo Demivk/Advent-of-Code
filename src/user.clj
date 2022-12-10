@@ -9,7 +9,8 @@
     [day6.day6 :as day-6]
     [day7.day7 :as day-7]
     [day8.day8 :as day-8]
-    [day9.day9 :as day-9]))
+    [day9.day9 :as day-9]
+    [day10.day10 :as day-10]))
 
 (def go refresh)
 
@@ -32,4 +33,6 @@
   (day-8/part-1)                                            ; Needed help with this one (in clojure), thanks Reddit
   (day-8/part-2)
   (day-9/part-1)
-  (day-9/part-2))
+  (day-9/part-2)
+  (day-10/part-1)
+  (day-10/part-2))

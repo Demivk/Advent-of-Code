@@ -1,4 +1,4 @@
-# Advent of Code 2022
+# Advent of Code
 https://adventofcode.com/
 
 ## How to setup the REPL
@@ -12,4 +12,4 @@ https://adventofcode.com/
 
 ## How to run
 
-Either run the `go` command or load the `user.clj` namespace in REPL.
+Either run the `go` command or load the `calendar.clj` namespace in REPL.

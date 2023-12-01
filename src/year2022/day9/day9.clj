@@ -1,9 +1,9 @@
-(ns day9.day9
+(ns year2022.day9.day9
   (:require
     [clojure.string :as string]
     [clojure.edn :as edn]))
 
-(defn read-input [] (string/split (slurp "src/day9/input.edn") #"\n"))
+(defn read-input [] (string/split (slurp "src/year2022/day9/input.edn") #"\n"))
 
 (defn abs [n] (max n (- n)))
 

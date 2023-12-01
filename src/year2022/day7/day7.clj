@@ -1,9 +1,9 @@
-(ns day7.day7
+(ns year2022.day7.day7
   (:require
     [clojure.string :as string]
     [clojure.edn :as edn]))
 
-(defn read-input [] (string/split (slurp "src/day7/input.edn") #"\n"))
+(defn read-input [] (string/split (slurp "src/year2022/day7/input.edn") #"\n"))
 
 (defn get-sizes [children] (mapv edn/read-string (filterv #(re-seq #"\d+" %) children)))
 

@@ -1,9 +1,9 @@
-(ns day4.day4
+(ns year2022.day4.day4
   (:require
     [clojure.string :as string]
     [clojure.edn :as edn]))
 
-(defn read-input [] (flatten (map #(string/split-lines %) (string/split (slurp "src/day4/input.edn") #"\n\n"))))
+(defn read-input [] (flatten (map #(string/split-lines %) (string/split (slurp "src/year2022/day4/input.edn") #"\n\n"))))
 
 (defn filter-overlapping [fully? input]
   (filterv

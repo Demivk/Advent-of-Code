@@ -1,8 +1,8 @@
-(ns day2.day2
+(ns year2022.day2.day2
   (:require
     [clojure.string :as string]))
 
-(defn read-input [] (flatten (map #(string/split-lines %) (string/split (slurp "src/day2/input.edn") #"\n\n"))))
+(defn read-input [] (flatten (map #(string/split-lines %) (string/split (slurp "src/year2022/day2/input.edn") #"\n\n"))))
 
 (def win-inputs #{"A Y" "B Z" "C X"})
 (def draw-inputs #{"A X" "B Y" "C Z"})

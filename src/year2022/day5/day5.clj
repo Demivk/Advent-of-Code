@@ -1,9 +1,9 @@
-(ns day5.day5
+(ns year2022.day5.day5
   (:require
     [clojure.string :as string]
     [clojure.edn :as edn]))
 
-(defn read-input [] (string/split (slurp "src/day5/input.edn") #"\n\n"))
+(defn read-input [] (string/split (slurp "src/year2022/day5/input.edn") #"\n\n"))
 
 (def pile-1 ["[V]" "[Q]" "[W]" "[M]" "[B]" "[N]" "[Z]" "[C]"])
 (def pile-2 ["[B]" "[C]" "[W]" "[R]" "[Z]" "[H]"])

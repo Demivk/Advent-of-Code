@@ -1,10 +1,10 @@
-(ns day8.day8
+(ns year2022.day8.day8
   (:require
     [clojure.string :as string]
     [clojure.edn :as edn]
     [clojure.set :as set]))
 
-(defn read-input [] (mapv #(mapv edn/read-string (string/split % #"")) (string/split (slurp "src/day8/input.edn") #"\n")))
+(defn read-input [] (mapv #(mapv edn/read-string (string/split % #"")) (string/split (slurp "src/year2022/day8/input.edn") #"\n")))
 
 (defn get-tree [grid x y] (nth (nth grid y) x))
 

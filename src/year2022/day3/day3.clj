@@ -1,9 +1,9 @@
-(ns day3.day3
+(ns year2022.day3.day3
   (:require
     [clojure.string :as string]
     [clojure.set :as set]))
 
-(defn read-input [] (flatten (map #(string/split-lines %) (string/split (slurp "src/day3/input.edn") #"\n\n"))))
+(defn read-input [] (flatten (map #(string/split-lines %) (string/split (slurp "src/year2022/day3/input.edn") #"\n\n"))))
 
 (defn split-in-half [input] (mapv (partial apply str) (partition-all (/ (count input) 2) input)))
 

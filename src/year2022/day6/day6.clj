@@ -1,8 +1,8 @@
-(ns day6.day6
+(ns year2022.day6.day6
   (:require
     [clojure.string :as string]))
 
-(defn read-input [] (string/replace (slurp "src/day6/input.edn") #"\n" ""))
+(defn read-input [] (string/replace (slurp "src/year2022/day6/input.edn") #"\n" ""))
 
 (defn get-start-marker [size partitioned]
   (loop [[r & rest] (mapv #(into #{} %) partitioned)

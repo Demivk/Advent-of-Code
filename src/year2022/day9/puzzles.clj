@@ -1,11 +1,11 @@
-(ns year2022.day9.day9
+(ns year2022.day9.puzzles
   (:require
     [clojure.string :as string]
     [clojure.edn :as edn]))
 
 (defn read-input [] (string/split (slurp "src/year2022/day9/input.edn") #"\n"))
 
-(defn abs [n] (max n (- n)))
+(defn absolute [n] (max n (- n)))
 
 (defn signum [delta]
   (cond
@@ -20,7 +20,7 @@
 (defn touching? [[head-x head-y] [tail-x tail-y]]
   (let [delta-x (- tail-x head-x)
         delta-y (- tail-y head-y)]
-    (and (<= (abs delta-x) 1) (<= (abs delta-y) 1))))
+    (and (<= (absolute delta-x) 1) (<= (absolute delta-y) 1))))
 
 (defn move-head [[x y] direction]
   (case direction
@@ -32,7 +32,7 @@
 (defn move-tail [[head-x head-y] [tail-x tail-y]]
   (let [delta-x (- tail-x head-x)
         delta-y (- tail-y head-y)]
-    (if (and (<= (abs delta-x) 1) (<= (abs delta-y) 1))
+    (if (and (<= (absolute delta-x) 1) (<= (absolute delta-y) 1))
       [tail-x tail-y]
       (->>
         (mapv - [head-x head-y] [tail-x tail-y])

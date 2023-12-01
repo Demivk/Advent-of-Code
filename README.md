@@ -12,4 +12,4 @@ https://adventofcode.com/
 
 ## How to run
 
-Either run the `go` command or load the `calendar.clj` namespace in REPL.
+Either run the `go` command or load the `yearX/calendar.clj` namespace in REPL.

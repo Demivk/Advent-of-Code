@@ -1,16 +1,16 @@
 (ns year2022.calendar
   (:require
     [clojure.tools.namespace.repl :refer [refresh]]
-    [year2022.day1.day1 :as day-1]
-    [year2022.day2.day2 :as day-2]
-    [year2022.day3.day3 :as day-3]
-    [year2022.day4.day4 :as day-4]
-    [year2022.day5.day5 :as day-5]
-    [year2022.day6.day6 :as day-6]
-    [year2022.day7.day7 :as day-7]
-    [year2022.day8.day8 :as day-8]
-    [year2022.day9.day9 :as day-9]
-    [year2022.day10.day10 :as day-10]))
+    [year2022.day1.puzzles :as day-1]
+    [year2022.day2.puzzles :as day-2]
+    [year2022.day3.puzzles :as day-3]
+    [year2022.day4.puzzles :as day-4]
+    [year2022.day5.puzzles :as day-5]
+    [year2022.day6.puzzles :as day-6]
+    [year2022.day7.puzzles :as day-7]
+    [year2022.day8.puzzles :as day-8]
+    [year2022.day9.puzzles :as day-9]
+    [year2022.day10.puzzles :as day-10]))
 
 (def go refresh)
 

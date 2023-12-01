@@ -1,15 +1,15 @@
-(ns year2023.day1.day1
+(ns year2023.day1.puzzles
   (:require
-    [clojure.edn :as edn]
+    [clojure.string :as string]
     [utils :as utils]))
 
-(def input-path "src/year2023/day1/input.edn")
+(def input (slurp (utils/input-file-path 2023 1)))
 
 (defn part-1 []
   (->>
-    (utils/read-rows input-path)
+    (utils/read-rows input)
     (mapv (fn [row] (filterv #(Character/isDigit %) row)))
-    (mapv #(edn/read-string (apply str [(first %) (last %)])))
+    (mapv #(utils/parse-int (apply str [(first %) (last %)])))
     (apply +)))
 
 ; eighthree (83), twone (21) are also valid...
@@ -27,14 +27,14 @@
 (defn replace-words [s]
   (reduce
     (fn [input word]
-      (.replace input word (get word-mapping word)))
+      (string/replace input word (get word-mapping word)))
     s
     (keys word-mapping)))
 
 (defn part-2 []
   (->>
-    (utils/read-rows input-path)
+    (utils/read-rows input)
     (mapv #(replace-words %))
     (mapv (fn [row] (filterv #(Character/isDigit %) row)))
-    (mapv #(edn/read-string (apply str [(first %) (last %)])))
+    (mapv #(utils/parse-int (apply str [(first %) (last %)])))
     (apply +)))

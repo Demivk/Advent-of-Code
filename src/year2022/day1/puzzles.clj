@@ -1,4 +1,4 @@
-(ns year2022.day1.day1
+(ns year2022.day1.puzzles
   (:require
     [clojure.string :as string]
     [clojure.edn :as edn]))

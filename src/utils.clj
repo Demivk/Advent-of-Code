@@ -8,6 +8,8 @@
 
 (defn read-grid [input] (mapv #(string/split % #"") (read-rows input)))
 
+(defn get-numbers [s] (re-seq #"\d+" s))
+
 (defn num? [s] (some? (first (re-matches #"\d+(\.\d+)?" (str s)))))
 
 (defn parse-int [s] (Integer/parseInt s))

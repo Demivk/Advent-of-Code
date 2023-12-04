@@ -4,7 +4,8 @@
     [clojure.tools.namespace.repl :refer [refresh]]
     [year2023.day1.puzzles :as day-1]
     [year2023.day2.puzzles :as day-2]
-    [year2023.day3.puzzles :as day-3]))
+    [year2023.day3.puzzles :as day-3]
+    [year2023.day4.puzzles :as day-4]))
 
 (def go refresh)
 
@@ -18,3 +19,6 @@
 
 (testing "Day 3 - part 1" (is (= (day-3/part-1) 528819)))
 (testing "Day 3 - part 2" (is (= (day-3/part-2) 80403602)))
+
+(testing "Day 4 - part 1" (is (= (day-4/part-1) 21821)))
+(testing "Day 4 - part 2" (is (= (day-4/part-2) 5539496)))

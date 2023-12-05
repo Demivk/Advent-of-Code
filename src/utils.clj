@@ -8,10 +8,14 @@
 
 (defn read-grid [input] (mapv #(string/split % #"") (read-rows input)))
 
-(defn get-numbers [s] (re-seq #"\d+" s))
+(defn split-whitespace [s] (string/split s #" "))
 
 (defn num? [s] (some? (first (re-matches #"\d+(\.\d+)?" (str s)))))
 
 (defn parse-int [s] (Integer/parseInt s))
 
-(defn split-whitespace [s] (string/split s #" "))
+(defn parse-big-int [s] (BigInteger. s))
+
+(defn get-ints [s] (mapv parse-int (re-seq #"\d+" s)))
+
+(defn get-big-ints [s] (mapv parse-big-int (re-seq #"\d+" s)))

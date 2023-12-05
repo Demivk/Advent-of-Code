@@ -15,8 +15,8 @@
     (mapv
       (fn [row]
         (let [[card numbers] (string/split row #": ")
-              card-number (utils/parse-int (first (utils/get-numbers card)))
-              [winning-numbers your-numbers] (mapv #(utils/get-numbers %) (string/split numbers #" \| "))
+              card-number (first (utils/get-ints card))
+              [winning-numbers your-numbers] (mapv #(utils/get-ints %) (string/split numbers #" \| "))
               matches (get-matches winning-numbers your-numbers)]
           (if part-1?
             (int (math/pow 2 (dec (count matches))))

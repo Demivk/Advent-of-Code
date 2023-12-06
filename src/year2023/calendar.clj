@@ -6,7 +6,8 @@
     [year2023.day2.puzzles :as day-2]
     [year2023.day3.puzzles :as day-3]
     [year2023.day4.puzzles :as day-4]
-    [year2023.day5.puzzles :as day-5]))
+    [year2023.day5.puzzles :as day-5]
+    [year2023.day6.puzzles :as day-6]))
 
 (def go refresh)
 
@@ -26,3 +27,6 @@
 
 (testing "Day 5 - part 1" (is (= (day-5/part-1) 57075758N)))
 (testing "Day 5 - part 2" (is (= (day-5/part-2) "I gave up")))
+
+(testing "Day 6 - part 1" (is (= (day-6/part-1) 128700)))
+(testing "Day 6 - part 2" (is (= (day-6/part-2) 39594072)))

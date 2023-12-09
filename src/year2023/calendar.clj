@@ -16,29 +16,46 @@
 
 (comment go)
 
-(testing "Day 1 - part 1" (is (= (day-1/part-1) 55029)))
-(testing "Day 1 - part 2" (is (= (day-1/part-2) 55686)))
+(defn run-timed-tests []
+  (println "✨ 2023 ✨")
+  (time
+    (do
+      (println "🎄Day 1")
+      (time (testing "Day 1 - part 1" (is (= (day-1/part-1) 55029))))
+      (time (testing "Day 1 - part 2" (is (= (day-1/part-2) 55686))))
 
-(testing "Day 2 - part 1" (is (= (day-2/part-1) 2331)))
-(testing "Day 2 - part 2" (is (= (day-2/part-2) 71585)))
+      (println "\n🎄Day 2")
+      (time (testing "Day 2 - part 1" (is (= (day-2/part-1) 2331))))
+      (time (testing "Day 2 - part 2" (is (= (day-2/part-2) 71585))))
 
-(testing "Day 3 - part 1" (is (= (day-3/part-1) 528819)))
-(testing "Day 3 - part 2" (is (= (day-3/part-2) 80403602)))
+      (println "\n🎄Day 3")
+      (time (testing "Day 3 - part 1" (is (= (day-3/part-1) 528819))))
+      (time (testing "Day 3 - part 2" (is (= (day-3/part-2) 80403602))))
 
-(testing "Day 4 - part 1" (is (= (day-4/part-1) 21821)))
-(testing "Day 4 - part 2" (is (= (day-4/part-2) 5539496)))
+      (println "\n🎄Day 4")
+      (time (testing "Day 4 - part 1" (is (= (day-4/part-1) 21821))))
+      (time (testing "Day 4 - part 2" (is (= (day-4/part-2) 5539496))))
 
-(testing "Day 5 - part 1" (is (= (day-5/part-1) 57075758N)))
-(testing "Day 5 - part 2" (is (= (day-5/part-2) "I gave up")))
+      (println "\n🎄Day 5")
+      (time (testing "Day 5 - part 1" (is (= (day-5/part-1) 57075758N))))
+      (time (testing "Day 5 - part 2" (is (= (day-5/part-2) "I gave up"))))
 
-(testing "Day 6 - part 1" (is (= (day-6/part-1) 128700)))
-(testing "Day 6 - part 2" (is (= (day-6/part-2) 39594072)))
+      (println "\n🎄Day 6")
+      (time (testing "Day 6 - part 1" (is (= (day-6/part-1) 128700))))
+      (time (testing "Day 6 - part 2" (is (= (day-6/part-2) 39594072))))
 
-(testing "Day 7 - part 1" (is (= (day-7/part-1) 249204891)))
-(testing "Day 7 - part 2" (is (= (day-7/part-2) 249666369)))
+      (println "\n🎄Day 7")
+      (time (testing "Day 7 - part 1" (is (= (day-7/part-1) 249204891))))
+      (time (testing "Day 7 - part 2" (is (= (day-7/part-2) 249666369))))
 
-(testing "Day 8 - part 1" (is (= (day-8/part-1) 19951)))
-(testing "Day 8 - part 2" (is (= (day-8/part-2) 16342438708751)))
+      (println "\n🎄Day 8")
+      (time (testing "Day 8 - part 1" (is (= (day-8/part-1) 19951))))
+      (time (testing "Day 8 - part 2" (is (= (day-8/part-2) 16342438708751))))
 
-(testing "Day 9 - part 1" (is (= (day-9/part-1) 2098530125)))
-(testing "Day 9 - part 2" (is (= (day-9/part-2) 1016)))
+      (println "\n🎄Day 9")
+      (time (testing "Day 9 - part 1" (is (= (day-9/part-1) 2098530125))))
+      (time (testing "Day 9 - part 2" (is (= (day-9/part-2) 1016))))
+
+      (println "\n🎅🏻Total time:"))))
+
+(comment (run-timed-tests))

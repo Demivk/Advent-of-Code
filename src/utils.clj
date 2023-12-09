@@ -16,9 +16,13 @@
 
 (defn parse-big-int [s] (BigInteger. s))
 
-(defn get-ints [s] (mapv parse-int (re-seq #"\d+" s)))
+(defn get-ints
+  "Returns a list of all the numbers in s as an int. Includes negative ints."
+  [s] (mapv parse-int (re-seq #"-?\d+" s)))
 
-(defn get-big-ints [s] (mapv parse-big-int (re-seq #"\d+" s)))
+(defn get-big-ints
+  "Returns a list of all the numbers in s as a big int. Includes negative ints."
+  [s] (mapv parse-big-int (re-seq #"-?\d+" s)))
 
 (defn gcd
   "GCD (Greatest Common Divisor)

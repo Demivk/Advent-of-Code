@@ -6,10 +6,9 @@
 
 (defn read-rows [input] (flatten (mapv #(string/split-lines %) (string/split input #"\n"))))
 
-(defn read-grid [input] (mapv #(string/split % #"") (read-rows input)))
-
 (defn split-whitespace [s] (string/split s #" "))
 
+; Numbers
 (defn num? [s] (some? (first (re-matches #"\d+(\.\d+)?" (str s)))))
 
 (defn parse-int [s] (Integer/parseInt s))
@@ -24,6 +23,28 @@
   "Returns a list of all the numbers in s as a big int. Includes negative ints."
   [s] (mapv parse-big-int (re-seq #"-?\d+" s)))
 
+; Grid
+(defn read-grid [input] (mapv #(string/split % #"") (read-rows input)))
+
+(defn get-cell
+  ([grid [x y]] (get-cell grid x y))
+  ([grid x y] (get-in grid [y x])))
+
+(defn top-coord [x y] [x (dec y)])
+(defn right-coord [x y] [(inc x) y])
+(defn bottom-coord [x y] [x (inc y)])
+(defn left-coord [x y] [(dec x) y])
+
+(defn get-top [grid x y] (when (>= (dec y) 0) (get-in grid [(dec y) x])))
+(defn get-right [grid x y] (when (<= (inc x) (count grid)) (get-in grid [y (inc x)])))
+(defn get-bottom [grid x y] (when (<= (inc y) (count (first grid))) (get-in grid [(inc y) x])))
+(defn get-left [grid x y] (when (>= (dec x) 0) (get-in grid [y (dec x)])))
+
+(defn get-adjacent-positions
+  "Returns the values of the top, right, bottom and left cells in that order."
+  [grid x y] ((juxt get-top get-right get-bottom get-left) grid x y))
+
+; GCD / LCM
 (defn gcd
   "GCD (Greatest Common Divisor)
 

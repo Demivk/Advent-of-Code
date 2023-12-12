@@ -44,6 +44,9 @@
   "Returns the values of the top, right, bottom and left cells in that order."
   [grid x y] ((juxt get-top get-right get-bottom get-left) grid x y))
 
+(defn transpose-grid "Switches the rows and columns of a grid"
+  [grid] (apply mapv vector grid))
+
 ; GCD / LCM
 (defn gcd
   "GCD (Greatest Common Divisor)

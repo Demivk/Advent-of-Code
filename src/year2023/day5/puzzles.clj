@@ -39,7 +39,7 @@
     seeds))
 
 (defn part-1 []
-  (let [[seeds & source-categories] (string/split input #"\n\n")
+  (let [[seeds & source-categories] (utils/split-double-new-lines input)
         seeds (utils/get-big-ints seeds)
         source-categories (mapv map-source-category source-categories)
         seed-paths (seed-paths seeds source-categories)]

@@ -2,11 +2,19 @@
   (:require
     [clojure.string :as string]))
 
+; String split
+(defn split-whitespace [s] (string/split s #" "))
+
+(defn split-every-character [s] (string/split s #""))
+
+(defn split-new-line [s] (string/split s #"\n"))
+
+(defn split-double-new-lines [s] (string/split s #"\n\n"))
+
+; Reading
 (defn input-file-path [year day] (str "src/year" year "/day" day "/input.edn"))
 
-(defn read-rows [input] (flatten (mapv #(string/split-lines %) (string/split input #"\n"))))
-
-(defn split-whitespace [s] (string/split s #" "))
+(defn read-rows [input] (vec (flatten (mapv #(string/split-lines %) (split-new-line input)))))
 
 ; Numbers
 (defn num? [s] (some? (first (re-matches #"\d+(\.\d+)?" (str s)))))

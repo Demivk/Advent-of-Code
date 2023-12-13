@@ -1,6 +1,5 @@
 (ns year2023.day7.puzzles
   (:require
-    [clojure.string :as string]
     [utils :as utils]))
 
 (def input (slurp (utils/input-file-path 2023 7)))
@@ -17,7 +16,7 @@
 (def high-card-strength 1)
 
 (defn joker-freqs [cards]
-  (let [card-list (string/split cards #"")
+  (let [card-list (utils/split-every-character cards)
         joker-count (count (filterv #(= % "J") card-list))
         non-joker-freqs (dissoc (frequencies cards) \J)]
     (if (= joker-count 5)

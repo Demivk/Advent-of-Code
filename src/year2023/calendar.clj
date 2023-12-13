@@ -13,7 +13,8 @@
     [year2023.day9.puzzles :as day-9]
     [year2023.day10.puzzles :as day-10]
     [year2023.day11.puzzles :as day-11]
-    [year2023.day12.puzzles :as day-12]))
+    [year2023.day12.puzzles :as day-12]
+    [year2023.day13.puzzles :as day-13]))
 
 (def go refresh)
 
@@ -70,6 +71,10 @@
       (println "\n🎄Day 12")
       (time (testing "Day 12 - part 1" (is (= (day-12/part-1) 8180))))
       (time (testing "Day 12 - part 2" (is (= (day-12/part-2) "The test input already takes way too long to run..."))))
+
+      (println "\n🎄Day 13")
+      (time (testing "Day 13 - part 1" (is (= (day-13/part-1) 34202))))
+      (time (testing "Day 13 - part 2" (is (= (day-13/part-2) 34230))))
 
       (println "\n🎅🏻Total time:"))))
 

@@ -6,8 +6,8 @@
 (def input (slurp (utils/input-file-path 2023 8)))
 
 (defn map-input []
-  (let [[instructions network] (string/split input #"\n\n")
-        instructions (string/split instructions #"")
+  (let [[instructions network] (utils/split-double-new-lines input)
+        instructions (utils/split-every-character instructions)
         network (utils/read-rows network)
         network (into {}
                   (mapv

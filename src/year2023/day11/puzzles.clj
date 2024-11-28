@@ -1,7 +1,6 @@
 (ns year2023.day11.puzzles
   (:require
-    [clojure.math :as math]
-    [utils :as utils]))
+    [clojure.math :as math]))
 
 (def input (slurp (utils/input-file-path 2023 11)))
 

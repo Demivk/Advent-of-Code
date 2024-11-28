@@ -1,6 +1,4 @@
-(ns year2023.day10.puzzles
-  (:require
-    [utils :as utils]))
+(ns year2023.day10.puzzles)
 
 (def input (slurp (utils/input-file-path 2023 10)))
 

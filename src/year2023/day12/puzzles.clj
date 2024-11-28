@@ -1,8 +1,7 @@
 (ns year2023.day12.puzzles
   (:require
     [clojure.math.combinatorics :as comb]
-    [clojure.string :as string]
-    [utils :as utils]))
+    [clojure.string :as string]))
 
 (def input (slurp (utils/input-file-path 2023 12)))
 

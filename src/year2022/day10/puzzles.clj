@@ -3,7 +3,7 @@
     [clojure.string :as string]
     [clojure.edn :as edn]))
 
-(defn read-input [] (string/split (slurp "src/year2022/day10/input.edn") #"\n"))
+(defn read-input [] (string/split (slurp (utils/input-file-path 2022 10)) #"\n"))
 
 (defn execute-program [instructions]
   (loop [[instruction & rest] instructions

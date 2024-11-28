@@ -12,7 +12,7 @@
 (defn split-double-new-lines [s] (string/split s #"\n\n"))
 
 ; Reading
-(defn input-file-path [year day] (str "src/year" year "/day" day "/input.edn"))
+(defn input-file-path [year day] (str "src/year" year "/day" (if (< day 10) (str "0" day) day) "/input.edn"))
 
 (defn read-rows [input] (vec (flatten (mapv #(string/split-lines %) (split-new-line input)))))
 

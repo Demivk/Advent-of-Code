@@ -5,6 +5,8 @@
 ; String split
 (defn split-whitespace [s] (string/split s #" "))
 
+(defn split-all-whitespaces [s] (string/split s #"\s+"))
+
 (defn split-every-character [s] (string/split s #""))
 
 (defn split-new-line [s] (string/split s #"\n"))

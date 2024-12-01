@@ -1,7 +1,8 @@
 (ns year2024.calendar
   (:require
     [clojure.test :refer [testing is]]
-    [clojure.tools.namespace.repl :refer [refresh]]))
+    [clojure.tools.namespace.repl :refer [refresh]]
+    [year2024.day01.puzzles :as day-01]))
 
 (def go refresh)
 
@@ -11,9 +12,9 @@
   (println "✨ 2024 ✨")
   (time
     (do
-      (println "🎄Day n")
-      (time (testing "Day n - part 1" (is (= 1 1))))
-      (time (testing "Day n - part 2" (is (= 2 2))))
+      (println "🎄Day 1")
+      (time (testing "Day 1 - part 1" (is (= (day-01/part-1) 3574690))))
+      (time (testing "Day 1 - part 2" (is (= (day-01/part-2) 22565391))))
 
       (println "\n🎄Day n")
       (time (testing "Day n - part 1" (is (= 1 1))))

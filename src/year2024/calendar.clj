@@ -2,7 +2,8 @@
   (:require
     [clojure.test :refer [testing is]]
     [clojure.tools.namespace.repl :refer [refresh]]
-    [year2024.day01.puzzles :as day-01]))
+    [year2024.day01.puzzles :as day-01]
+    [year2024.day02.puzzles :as day-02]))
 
 (def go refresh)
 
@@ -16,9 +17,9 @@
       (time (testing "Day 1 - part 1" (is (= (day-01/part-1) 3574690))))
       (time (testing "Day 1 - part 2" (is (= (day-01/part-2) 22565391))))
 
-      (println "\n🎄Day n")
-      (time (testing "Day n - part 1" (is (= 1 1))))
-      (time (testing "Day n - part 2" (is (= 2 2))))
+      (println "\n🎄Day 2")
+      (time (testing "Day 2 - part 1" (is (= (day-02/part-1) 680))))
+      (time (testing "Day 2 - part 2" (is (= (day-02/part-2) 710))))
 
       (println "\n🎅🏻Total time:"))))
 

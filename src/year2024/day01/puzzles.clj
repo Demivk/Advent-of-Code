@@ -4,17 +4,16 @@
 
 (defn part-1 []
   (let [pairs (map #(mapv utils/parse-int (utils/split-all-whitespaces %)) (utils/split-new-line input))
-        left-list (sort (map first pairs))
-        right-list (sort (map last pairs))]
-    (apply + (map (fn [n1 n2] (- (max n1 n2) (min n1 n2))) left-list right-list))))
+        l (sort (map first pairs))
+        r (sort (map last pairs))]
+    (->>
+      (map #(abs (- %1 %2)) l r)
+      (apply +))))
 
 (defn part-2 []
   (let [pairs (map #(mapv utils/parse-int (utils/split-all-whitespaces %)) (utils/split-new-line input))
-        left-list (sort (map first pairs))
-        right-list (sort (map last pairs))]
-    (apply +
-      (map
-        (fn [n1 _]
-          (let [appear-count (count (filter #(= % n1) right-list))]
-            (* n1 appear-count)))
-        left-list right-list))))
+        l (sort (map first pairs))
+        r (sort (map last pairs))]
+    (->>
+      (map (fn [n1 _] (let [appear-count (count (filter #(= % n1) r))] (* n1 appear-count))) l r)
+      (apply +))))

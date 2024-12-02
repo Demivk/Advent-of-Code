@@ -97,3 +97,7 @@ modules.xml
 
 # clj-kondo
 .clj-kondo/.cache/
+
+# Puzzle inputs
+# https://adventofcode.com/2024/about#faq_copying
+src/*/*/input.edn

@@ -57,6 +57,20 @@
 (defn transpose-grid "Switches the rows and columns of a grid"
   [grid] (apply mapv vector grid))
 
+; Hashmap
+(defn grid->coords-hashmap
+  "Returns a map where the keys are the cells of the grid and the values their coords."
+  [grid]
+  (reduce
+    (fn [hashmap [row-i row]]
+      (reduce
+        (fn [hashmap [col-i val]]
+          (update hashmap val (fn [coords] (conj (or coords []) [row-i col-i]))))
+        hashmap
+        (map-indexed vector row)))
+    {}
+    (map-indexed vector grid)))
+
 ; GCD / LCM
 (defn gcd
   "GCD (Greatest Common Divisor)

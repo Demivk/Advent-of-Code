@@ -8,7 +8,7 @@
 (def connected-left-pipes #{"-" "L" "F"})
 
 (defn get-adjacents [grid [x y]]
-  (let [[top-pipe right-pipe bottom-pipe left-pipe] (utils/get-adjacent-positions grid x y)
+  (let [[top-pipe right-pipe bottom-pipe left-pipe] (utils/get-cardinal-values grid x y)
         top-connected? (contains? connected-top-pipes top-pipe)
         right-connected? (contains? connected-right-pipes right-pipe)
         bottom-connected? (contains? connected-bottom-pipes bottom-pipe)
@@ -20,7 +20,7 @@
       left-connected? (conj (utils/left-coord x y)))))
 
 (defn next-pipe [grid [x y] dx dy]
-  (let [pipe (utils/get-cell grid [x y])]
+  (let [pipe (utils/get-cell-value grid x y)]
     (case pipe
       "|" [x (+ y dy)]
       "-" [(+ x dx) y]

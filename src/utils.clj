@@ -36,23 +36,71 @@
 ; Grid
 (defn read-grid [input] (mapv #(string/split % #"") (read-rows input)))
 
-(defn get-cell
-  ([grid [x y]] (get-cell grid x y))
+(defn get-cell-value
+  ([grid [x y]] (get-cell-value grid x y))
   ([grid x y] (get-in grid [y x])))
 
+(defn top-left-coord [x y] [(dec x) (dec y)])
 (defn top-coord [x y] [x (dec y)])
+(defn top-right-coord [x y] [(inc x) (dec y)])
 (defn right-coord [x y] [(inc x) y])
+(defn bottom-right-coord [x y] [(inc x) (inc y)])
 (defn bottom-coord [x y] [x (inc y)])
+(defn bottom-left-coord [x y] [(dec x) (inc y)])
 (defn left-coord [x y] [(dec x) y])
 
-(defn get-top [grid x y] (when (>= (dec y) 0) (get-in grid [(dec y) x])))
-(defn get-right [grid x y] (when (<= (inc x) (count grid)) (get-in grid [y (inc x)])))
-(defn get-bottom [grid x y] (when (<= (inc y) (count (first grid))) (get-in grid [(inc y) x])))
-(defn get-left [grid x y] (when (>= (dec x) 0) (get-in grid [y (dec x)])))
+(defn top-left-value [grid x y]
+  (when (and (>= (dec x) 0) (>= (dec y) 0))
+    (get-cell-value grid (dec x) (dec y))))
 
-(defn get-adjacent-positions
+(defn top-value [grid x y]
+  (when (>= (dec y) 0)
+    (get-cell-value grid x (dec y))))
+
+(defn top-right-value [grid x y]
+  (when (and (< (inc x) (count (first grid))) (>= (dec y) 0))
+    (get-cell-value grid (inc x) (dec y))))
+
+(defn right-value [grid x y]
+  (when (< (inc x) (count (first grid)))
+    (get-cell-value grid (inc x) y)))
+
+(defn bottom-right-value [grid x y]
+  (when (and (< (inc x) (count (first grid))) (< (inc y) (count grid)))
+    (get-cell-value grid (inc x) (inc y))))
+
+(defn bottom-value [grid x y]
+  (when (< (inc y) (count grid))
+    (get-cell-value grid x (inc y))))
+
+(defn bottom-left-value [grid x y]
+  (when (and (>= (dec x) 0) (< (inc y) (count grid)))
+    (get-cell-value grid (dec x) (inc y))))
+
+(defn left-value [grid x y]
+  (when (>= (dec x) 0)
+    (get-cell-value grid (dec x) y)))
+
+(defn get-cardinal-coords
+  "Returns the coords of the top, right, bottom and left cells in that order."
+  [x y]
+  ((juxt top-coord right-coord bottom-coord left-coord) x y))
+
+(defn get-cardinal-values
   "Returns the values of the top, right, bottom and left cells in that order."
-  [grid x y] ((juxt get-top get-right get-bottom get-left) grid x y))
+  [grid x y] ((juxt top-value right-value bottom-value left-value) grid x y))
+
+(defn get-all-surrounding-coords
+  "Returns the coords of the top left, top, top right, right, bottom right, bottom, bottom left and left cells in
+  that order."
+  [x y]
+  ((juxt top-left-coord top-coord top-right-coord right-coord bottom-right-coord bottom-coord bottom-left-coord left-coord) x y))
+
+(defn get-all-surrounding-values
+  "Returns the values of the top left, top, top right, right, bottom right, bottom, bottom left and left cells in
+  that order."
+  [grid x y]
+  ((juxt top-left-value top-value top-right-value right-value bottom-right-value bottom-value bottom-left-value left-value) grid x y))
 
 (defn transpose-grid "Switches the rows and columns of a grid"
   [grid] (apply mapv vector grid))
@@ -65,7 +113,7 @@
     (fn [hashmap [row-i row]]
       (reduce
         (fn [hashmap [col-i val]]
-          (update hashmap val (fn [coords] (conj (or coords []) [row-i col-i]))))
+          (update hashmap val (fn [coords] (conj (or coords []) [col-i row-i]))))
         hashmap
         (map-indexed vector row)))
     {}

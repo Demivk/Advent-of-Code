@@ -40,6 +40,15 @@
   ([grid [x y]] (get-cell-value grid x y))
   ([grid x y] (get-in grid [y x])))
 
+(defn value->coord
+  "Returns the coord of the first match in the grid"
+  [grid value]
+  (some
+    (fn [[i row]]
+      (when (some #(= % value) row)
+        [(.indexOf row value) i]))
+    (map-indexed vector grid)))
+
 (defn top-left-coord [x y] [(dec x) (dec y)])
 (defn top-coord [x y] [x (dec y)])
 (defn top-right-coord [x y] [(inc x) (dec y)])

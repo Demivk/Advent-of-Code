@@ -8,7 +8,8 @@
     [year2024.day04.puzzles :as day-04]
     [year2024.day05.puzzles :as day-05]
     [year2024.day06.puzzles :as day-06]
-    [year2024.day07.puzzles :as day-07]))
+    [year2024.day07.puzzles :as day-07]
+    [year2024.day08.puzzles :as day-08]))
 
 (def go refresh)
 
@@ -45,6 +46,10 @@
       (println "\n🎄Day 7")
       (time (testing "Day 7 - part 1" (is (= (day-07/part-1) 5512534574980))))
       (time (testing "Day 7 - part 2" (is (= (day-07/part-2) 328790210468594))))
+
+      (println "\n🎄Day 8")
+      (time (testing "Day 8 - part 1" (is (= (day-08/part-1) 299))))
+      (time (testing "Day 8 - part 2" (is (= (day-08/part-2) 1032))))
 
       (println "\n🎅🏻Total time:"))))
 

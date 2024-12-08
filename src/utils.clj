@@ -36,6 +36,27 @@
 ; Grid
 (defn read-grid [input] (mapv #(string/split % #"") (read-rows input)))
 
+(defn in-bounds? [grid [x y]]
+  (and
+    (>= x 0) (< x (count (first grid)))
+    (>= y 0) (< y (count grid))))
+
+(defn delta-x
+  "Returns the difference of x2 - x1"
+  [[x1 _] [x2 _]] (- x2 x1))
+
+(defn delta-y
+  "Returns the difference of y2 - y1"
+  [[_ y1] [_ y2]] (- y2 y1))
+
+(defn delta
+  "Returns the difference of x2 - x1 and y2 - y1"
+  [coord-1 coord-2] [(delta-x coord-1 coord-2) (delta-y coord-1 coord-2)])
+
+(defn add-delta [[x y] [dx dy]] [(+ x dx) (+ y dy)])
+
+(defn subtract-delta [[x y] [dx dy]] [(- x dx) (- y dy)])
+
 (defn get-cell-value
   ([grid [x y]] (get-cell-value grid x y))
   ([grid x y] (get-in grid [y x])))

@@ -41,6 +41,11 @@
     (>= x 0) (< x (count (first grid)))
     (>= y 0) (< y (count grid))))
 
+(defn grid->all-coords [grid]
+  (for [x (range (count (first grid)))
+        y (range (count grid))]
+    [x y]))
+
 (defn delta-x
   "Returns the difference of x2 - x1"
   [[x1 _] [x2 _]] (- x2 x1))

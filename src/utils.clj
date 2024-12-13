@@ -154,37 +154,24 @@
     {}
     (map-indexed vector grid)))
 
-; BFS
-(defn bfs
-  "Breadth-First Search (BFS)
-
-  Given a grid, start coord and visited coll, this function performs a breadth-first traversal of the grid. It
-  looks for valid paths where adjacent cells have incrementing int values starting from the value (in most cases
-  probably 0) at the `trailhead` coord. Returns the amount of valid paths that end at a cell with value `target`
-  Cells cannot be revisted."
-  [grid trailhead visited target]
-  (loop [queue [trailhead]
-         visited visited
-         valid-paths 0]
+; BFS Breadth-First Search
+(defn bfs [grid start-coord visited]
+  (loop [queue [start-coord]
+         visited (conj visited start-coord)]
     (if (empty? queue)
-      valid-paths
+      visited
       (let [[current & remaining] queue
             [x y] current
             current-value (utils/get-cell-value grid current)
-            ; Remove the neighbours that are out of bounds, already visited and are not equal to the next value
-            neighbours (filterv
-                         (fn [[nx ny]]
-                           (and
-                             (utils/in-bounds? grid [nx ny])
-                             (not (contains? visited [nx ny]))
-                             (= (inc current-value) (utils/get-cell-value grid nx ny))))
-                         (utils/get-cardinal-coords x y))]
+            neighbour-coords (filterv
+                               #(and
+                                  (utils/in-bounds? grid %)
+                                  (not (contains? visited %))
+                                  (= current-value (utils/get-cell-value grid %)))
+                               (utils/get-cardinal-coords x y))]
         (recur
-          (into remaining neighbours)
-          (into visited neighbours)
-          (if (= target current-value)
-            (inc valid-paths)
-            valid-paths))))))
+          (into remaining neighbour-coords)
+          (into visited neighbour-coords))))))
 
 ; GCD / LCM
 (defn gcd

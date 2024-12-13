@@ -15,31 +15,13 @@
     0
     coords))
 
-(defn bfs [grid start-coord visited]
-  (loop [queue [start-coord]
-         visited (conj visited start-coord)]
-    (if (empty? queue)
-      visited
-      (let [[current & remaining] queue
-            [x y] current
-            current-value (utils/get-cell-value grid current)
-            neighbour-coords (filterv
-                               #(and
-                                  (utils/in-bounds? grid %)
-                                  (not (contains? visited %))
-                                  (= current-value (utils/get-cell-value grid %)))
-                               (utils/get-cardinal-coords x y))]
-        (recur
-          (into remaining neighbour-coords)
-          (into visited neighbour-coords))))))
-
 (defn find-plots [grid]
   (loop [all-coords (into #{} (utils/grid->all-coords grid))
          plots []]
     (if (empty? all-coords)
       plots
       (let [checking (first all-coords)
-            plot-coords (bfs grid checking #{})
+            plot-coords (utils/bfs grid checking #{})
             areas (conj plots
                     {:coords plot-coords
                      :value (utils/get-cell-value grid checking)

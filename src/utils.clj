@@ -36,6 +36,13 @@
 ; Grid
 (defn read-grid [input] (mapv #(string/split % #"") (read-rows input)))
 
+(defn make-grid [width height]
+  (reduce
+    (fn [grid y]
+      (conj grid (mapv (fn [x] [x y]) (range width))))
+    []
+    (range height)))
+
 (defn in-bounds? [grid [x y]]
   (and
     (>= x 0) (< x (count (first grid)))
@@ -45,6 +52,15 @@
   (for [x (range (count (first grid)))
         y (range (count grid))]
     [x y]))
+
+(defn draw-coords-on-grid [width height coords]
+  (println
+    (->>
+      (for [y (range height)]
+        (->>
+          (for [x (range width)] (if (contains? (into #{} coords) [x y]) "#" "."))
+          (apply str)))
+      (clojure.string/join "\n"))))
 
 (defn delta-x
   "Returns the difference of x2 - x1"

@@ -53,15 +53,6 @@
         y (range (count grid))]
     [x y]))
 
-(defn draw-coords-on-grid [width height coords]
-  (println
-    (->>
-      (for [y (range height)]
-        (->>
-          (for [x (range width)] (if (contains? (into #{} coords) [x y]) "#" "."))
-          (apply str)))
-      (clojure.string/join "\n"))))
-
 (defn delta-x
   "Returns the difference of x2 - x1"
   [[x1 _] [x2 _]] (- x2 x1))
@@ -90,6 +81,38 @@
       (when (some #(= % value) row)
         [(.indexOf row value) i]))
     (map-indexed vector grid)))
+
+(defn values->coords
+  "Returns the coords of all matches in the grid"
+  [grid value]
+  (->>
+    (keep
+      (fn [[y row]]
+        (seq (keep
+               (fn [[x v]] (when (= v value) [x y]))
+               (map-indexed vector row))))
+      (map-indexed vector grid))
+    (mapcat identity)))
+
+(defn draw-grid [grid]
+  (println
+    (->>
+      (for [y (range (count grid))]
+        (->>
+          (for [x (range (count (first grid)))] (get-cell-value grid x y))
+          (apply str)))
+      (clojure.string/join "\n"))))
+
+(defn draw-coords-on-grid
+  ([grid coords] (draw-coords-on-grid (count (first grid)) (count grid) coords))
+  ([width height coords]
+   (println
+     (->>
+       (for [y (range height)]
+         (->>
+           (for [x (range width)] (if (contains? (into #{} coords) [x y]) "#" "."))
+           (apply str)))
+       (clojure.string/join "\n")))))
 
 (defn top-left-coord [x y] [(dec x) (dec y)])
 (defn top-coord [x y] [x (dec y)])

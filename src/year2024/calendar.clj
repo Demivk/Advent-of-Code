@@ -15,7 +15,8 @@
     [year2024.day11.puzzles :as day-11]
     [year2024.day12.puzzles :as day-12]
     [year2024.day13.puzzles :as day-13]
-    [year2024.day14.puzzles :as day-14]))
+    [year2024.day14.puzzles :as day-14]
+    [year2024.day15.puzzles :as day-15]))
 
 (def go refresh)
 
@@ -80,6 +81,10 @@
       (println "\n🎄Day 14")
       (time (testing "Day 14 - part 1" (is (= (day-14/part-1) 225810288))))
       (time (testing "Day 14 - part 2" (is (= (day-14/part-2) 6752))))
+
+      (println "\n🎄Day 15")
+      (time (testing "Day 15 - part 1" (is (= (day-15/part-1) 1526673))))
+      (time (testing "Day 15 - part 2" (is (= (day-15/part-2) 0))))
 
       (println "\n🎅🏻Total time:"))))
 

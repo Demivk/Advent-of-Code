@@ -25,6 +25,8 @@
 
 (defn parse-big-int [s] (BigInteger. s))
 
+(defn parse-long [s] (Long/parseLong s))
+
 (defn get-ints
   "Returns a list of all the numbers in s as an int. Includes negative ints."
   [s] (mapv parse-int (re-seq #"-?\d+" s)))

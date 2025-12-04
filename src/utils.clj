@@ -96,6 +96,11 @@
       (map-indexed vector grid))
     (mapcat identity)))
 
+(defn set-cell-value
+  "Returns the updated grid with the given value set at the given coords"
+  ([grid [x y] value] (set-cell-value grid x y value))
+  ([grid x y value] (assoc-in grid [y x] value)))
+
 (defn draw-grid [grid]
   (println
     (->>

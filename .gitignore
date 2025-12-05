@@ -16,6 +16,9 @@ pom.xml.asc
 .lein-failures
 .nrepl-port
 .cpcache/
+.nrepl-port
+.lsp/
+.calva/
 
 # Ignore intellij project setting
 .idea/*

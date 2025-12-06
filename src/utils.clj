@@ -36,7 +36,9 @@
   [s] (mapv parse-big-int (re-seq #"-?\d+" s)))
 
 ; Grid
-(defn read-grid [input] (mapv #(string/split % #"") (read-rows input)))
+(defn read-grid
+  ([input] (read-grid input #""))
+  ([input regex] (mapv #(string/split % regex) (read-rows input))))
 
 (defn make-grid [width height]
   (reduce
